@@ -1,0 +1,11 @@
+{
+  "name": "whatsapp-bot-cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.16",
+    "qrcode": "^1.5.4"
+  }
+}

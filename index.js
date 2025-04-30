@@ -2,7 +2,7 @@ import {
   makeWASocket,
   useMultiFileAuthState,
   DisconnectReason,
-} from "@whiskeysockets/baileys";
+} from "baileys";
 import QRCode from "qrcode";
 
 async function connectToWhatsapp() {
@@ -13,14 +13,14 @@ async function connectToWhatsapp() {
   sock.ev.on("connection.update", async (update) => {
     const { connection, lastDisconnect, qr } = update;
 
-    console.log("creds.update");
+    console.log("creds.update", qr);
 
     if (connection === "close") {
       const code = lastDisconnect?.error?.output?.statusCode;
       const reasonText = DisconnectReason[code] || "Unknown";
 
       console.log(`Connection closed [${reasonText}]`);
-      console.log( 'code', code)
+      console.log("code", code);
       if (code !== DisconnectReason.loggedOut) {
         console.log(`Attempting to reconnect...`);
         await connectToWhatsapp(); // retry
